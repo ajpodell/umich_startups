@@ -17,7 +17,13 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  /*padding-top: 60px;*/
+}
+
+.navbar-fixed-top{
+  position: relative;
+  padding-top: 109px;
+  background-color: yellow;
 }
 
 section {
@@ -62,6 +68,10 @@ p {
   line-height: 1.7em;
 }
 
+li {
+  border: 2px 0 2px 2px;
+}
+
 
 /* header */
 
@@ -84,7 +94,7 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 75px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $grayLight;

@@ -1,7 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+ <div class="banner" style="width: 100%; background-color: blue; position: absolute; top: 0" >
+    <%= link_to image_tag("banner_logo.png", style: "height: 100px;", class: "offset3"), root_path, id: "logo" %>
+  </div>
+  <div /*class="navbar-inner"*/ style="position: relative">
     <div class="container">
-      <%= link_to "UMich Startups", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>

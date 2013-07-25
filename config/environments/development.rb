@@ -34,4 +34,9 @@ UmichStartups::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # For paperclip plugin
+  Paperclip.options[:command_path] = "/usr/local/bin"
+  Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
+
 end

@@ -1,5 +1,12 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+
+  #profile photo
+  attr_accessible :photo
+  #attr_accessor :photo
+  #attr_accessor :photo_file_name
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
+
   has_secure_password
 
 
