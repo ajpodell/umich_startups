@@ -1,8 +1,17 @@
 <%provide(:title, @user.name) %>
 <h1><%= @user.name %></h1>
-<%= image_tag @user.photo.url(:thumb) %>
-email: <%= @user.email %><br/>
+<div class="profile-box">
+	<div class="profile-photo">
+		<%= image_tag @user.photo.url(:medium) %>
+	</div>
+	<div class="profile-description">
+		<strong>Email:</strong> 
+		<a href="mailto: <%= @user.email %>"><%= @user.email %></a><br/>
+		<% if @user.major.blank? && current_user?(@user) %>
+			<%= link_to "Declare your major", edit_user_path(@user) %>
+		<% elsif !@user.major.blank? %>
+			Major: <%= @user.major %>
+		<% end %>
+	</div>
 	
-	<% if false %>
-		<%= gravatar_for @user, size: 100 %><br/>
-	<% end %>
+	

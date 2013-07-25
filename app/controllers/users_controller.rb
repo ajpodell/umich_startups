@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def index
     #@users = User.all
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 3)
   end
 
   def edit
@@ -32,6 +32,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    # if @user.password == params[:user][:password]
+    #   flash[:notice] = "Password matches current"
+    # end
+
+    flash[:notice] = params[:user][:password]
+
     if @user.update_attributes(params[:user])
         #Handle a successful update
         flash[:success] = "Profile updated"
@@ -40,6 +46,13 @@ class UsersController < ApplicationController
     else
         render 'edit'
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    flash[:success] = "#{user.name} has been deleted from the system"
+    redirect_to users_url
   end
 
 
