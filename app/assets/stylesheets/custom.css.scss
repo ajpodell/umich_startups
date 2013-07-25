@@ -14,10 +14,12 @@ $grayMediumLight: #eaeaea;
 
 html {
   overflow-y: scroll;
+  min-height: 100%;
 }
 
 body {
   /*padding-top: 60px;*/
+  min-height: 100%;
 }
 
 .navbar-fixed-top{
@@ -94,6 +96,11 @@ li {
 /* footer */
 
 footer {
+  position: absolute;
+  bottom: 0px;
+  width: 940px;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 75px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
@@ -182,6 +189,23 @@ aside {
 /* profile */
 .profile-description { 
   padding-top: 20px;
+}
+
+/* Companies on profile */
+.company-container {
+  /*border: 1px solid lightgray;*/
+  padding: 10px;
+  min-height: 300px;
+  position: relative;
+}
+
+.pagination-top {
+  position: absolute;
+  top: 0;
+}
+.pagination-bottom {
+  position: absolute;
+  bottom: 0;
 }
 
 

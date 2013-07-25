@@ -6,6 +6,7 @@ UmichStartups::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :companies
 
   #get "static_pages/home"
   root to: 'static_pages#home'
