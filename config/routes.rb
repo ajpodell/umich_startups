@@ -1,12 +1,20 @@
 UmichStartups::Application.routes.draw do
 
+  get "connections/create"
+  get "connections/destroy"
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions
   resources :companies
+  resources :connections
 
   #get "static_pages/home"
   root to: 'static_pages#home'

@@ -1,0 +1,16 @@
+<% unless current_user?(@user) %>
+  <div id="connect_form">
+  	<%= render 'disconnect' %>
+
+  	<% if false %>
+	  <% if current_user.following?(@user) %>
+
+	    <%= render 'disconnect' %>
+	  <% else %>
+	    <%= render 'connect' %>
+	  <% end %>
+	<% end %>
+
+
+  </div>
+<% end %>

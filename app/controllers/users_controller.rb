@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user,
-                  only: [:show, :index, :edit, :update, :destroy]
+                  only: [:show, :index, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: [:destroy]              
   def new
@@ -33,12 +33,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # if @user.password == params[:user][:password]
-    #   flash[:notice] = "Password matches current"
-    # end
-
-    flash[:notice] = params[:user][:password]
-
     if @user.update_attributes(params[:user])
         #Handle a successful update
         flash[:success] = "Profile updated"
@@ -54,6 +48,20 @@ class UsersController < ApplicationController
     user.destroy
     flash[:success] = "#{user.name} has been deleted from the system"
     redirect_to users_url
+  end
+
+  def following
+    @title = "Connections"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_connect'
+  end
+
+  def followers
+    @title = "Connected Users"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_connect'
   end
 
 
