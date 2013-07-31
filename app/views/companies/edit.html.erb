@@ -1,0 +1,22 @@
+<% provide(:title, "Edit #{@company.title}") %>
+<h1>Update <%= @company.title %></h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@company) do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :mission, "Mission statement" %>
+			<%= f.text_area :mission, class: "small-textarea" %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description, class: "medium-textarea" %>
+
+			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+
+		<% end %>
+	</div>
+</div>
