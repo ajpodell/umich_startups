@@ -1,8 +1,18 @@
 <%provide(:title, @user.name) %>
-<h1><%= @user.name %></h1>
-<div class="span8">
-    <%= render 'connect_form' if signed_in? %>
-</div>
+<h1>
+	<table width="100%">
+		<tr>
+			<td>
+				<%= @user.name %> 
+			</td>
+			<td>
+				<div class="span2">
+				    <%= render 'connect_form' if signed_in? %>
+				</div>
+			</td>
+		</tr>
+	</table>
+</h1>
 <div class="row">
 	<div class="profile-box">
 		<aside class="span4">

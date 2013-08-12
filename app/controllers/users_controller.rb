@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.new(params[:user])
+  	@user = User.new(user_params)
   	if @user.save
       sign_in @user
-	  	flash[:success] = "Flash test"
+	  	# flash[:success] = "Flash test"
   		redirect_to @user
   	else 
   		render 'new'
@@ -66,6 +66,12 @@ class UsersController < ApplicationController
 
 
   private
+
+    def user_params
+        params.require(:user).permit(:name, :email, :password, :photo, :major,
+                                     :password_confirmation)
+    end
+
     def correct_user
       @user = User.find(params[:id])
       redirect_to root_path unless current_user?(@user)

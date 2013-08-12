@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
 	def create
-		@company = current_user.companies.build(params[:company])
+		# @company = current_user.companies.build(params[:company])
+		@company = current_user.companies.build(company_params)
 		
 		if@company.save
 			flash[:success] = "Company created"
@@ -34,5 +35,10 @@ class CompaniesController < ApplicationController
 	        render 'edit'
 	    end
 	end
+
+	private
+		def company_params
+			params.require(:company).permit(:title, :user_id, :description, :mission)
+		end
 
 end

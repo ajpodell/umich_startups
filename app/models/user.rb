@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :photo, :major, :password, :password_confirmation
+  #deprecated in rails 4
+  #attr_accessible :email, :name, :photo, :major, :password, :password_confirmation
   has_many :companies
   
   #connections
