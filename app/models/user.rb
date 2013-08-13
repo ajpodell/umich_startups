@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   #profile photo
   #attr_accessor :photo
   #attr_accessor :photo_file_name
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/missing.png"
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>", :tiny => "30X30>" }, :default_url => "/assets/missing_:style.png"
 
   has_secure_password
 
