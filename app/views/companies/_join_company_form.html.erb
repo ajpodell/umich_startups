@@ -1,0 +1,16 @@
+<div id="join_company_form">
+  <ul class="companies">
+	<% @companies.each do |c| %>
+	
+		<li><h2><%= c.title %> | </h2>  
+		  <% if current_user.member?(c) %>
+		    <%= render partial: 'companies/leave_company', locals: {company: c } %>
+		  <% else %>
+		    <%= render partial: 'companies/join_company', locals: { company: c } %>
+		  <% end %>
+	
+	<% end %>
+  </ul>
+  
+
+</div>

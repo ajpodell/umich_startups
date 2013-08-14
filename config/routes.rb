@@ -9,12 +9,13 @@ UmichStartups::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :memberships
     end
   end
   resources :sessions
   resources :companies
   resources :connections
+  resources :memberships
 
   #get "static_pages/home"
   root to: 'static_pages#home'

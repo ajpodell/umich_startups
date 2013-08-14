@@ -64,6 +64,16 @@ class UsersController < ApplicationController
     render 'show_connect'
   end
 
+  def memberships
+    #find and display companies via memberships
+    @user = User.find(params[:id])
+    @memberships = @user.memberships.paginate(page: params[:page])
+    @companies = []
+    @memberships.each { |m| @companies.push Company.find(m.company_id) }
+    @companies = @companies.paginate(page: params[:page])
+    render 'show_companies'
+  end
+
 
   private
 

@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   #deprecated in rails 4
   #attr_accessible :email, :name, :photo, :major, :password, :password_confirmation
-  has_many :companies
   
   #connections
   has_many :connections, foreign_key: "follower_id", dependent: :destroy
@@ -10,10 +9,15 @@ class User < ActiveRecord::Base
                                    class_name:  "Connection",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_connections, source: :follower
+  
+  #companies
+  has_many :companies # TAKE THIS OUT
+  has_many :memberships, dependent: :destroy # foreign_key: "user_id"
+
   #profile photo
   #attr_accessor :photo
   #attr_accessor :photo_file_name
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>", :tiny => "30X30>" }, :default_url => "/assets/missing_:style.png"
+  has_attached_file :photo, :styles => { :medium => "200x200>", :thumb => "100x100>", :tiny => "30X30>" }, :default_url => "/assets/missing_:style.png"
 
   has_secure_password
 
@@ -41,6 +45,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     connections.find_by_followed_id(other_user.id).destroy
+  end
+
+  def member?(company)
+    memberships.find_by(company_id: company.id)
+  end
+
+  def join_company!(company)
+    memberships.create!(company_id: company.id)
+  end
+
+  def leave_company!(company)
+    memberships.find_by(company_id: company.id).destroy
   end
 
   private

@@ -37,3 +37,19 @@
 .medium-textarea {
 	height: 6em;
 }
+
+li{
+	h2{
+		display: inline;
+	}
+	form{
+		display: inline;
+	}
+}
+
+ul.companies {
+	li {
+		padding-bottom: 20px;
+		list-style-type: none;
+	}
+}

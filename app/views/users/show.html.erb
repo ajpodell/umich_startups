@@ -1,5 +1,5 @@
 <%provide(:title, @user.name) %>
-<h1>
+<h1 class="title">
 	<% unless current_user?(@user) %>
 		<table width="100%">
 			<tr>
@@ -18,24 +18,27 @@
 	<% end %>
 
 </h1>
-<div class="row">
-	<div class="profile-box">
-		<aside class="span4">
-			<div class="profile-photo">
-				<%= image_tag @user.photo.url(:medium) %>
-			</div>
-			<div class="profile-description">
-				<strong>Email:</strong> 
-				<a href="mailto: <%= @user.email %>"><%= @user.email %></a><br/>
-				<% if @user.major.blank? && current_user?(@user) %>
-					<%= link_to "Declare your major", edit_user_path(@user) %>
-				<% elsif !@user.major.blank? %>
-					<strong>Major: </strong><%= @user.major %>
-				<% end %>
-			</div>
-		</aside>
-	</div>
 
+<div class="row">
+	
+	<div class="about-user">
+		<div class="profile-box">
+			<aside class="span4">
+				<div class="profile-photo">
+					<%= image_tag @user.photo.url(:medium) %>
+				</div>
+				<div class="profile-description">
+					<strong>Email:</strong> 
+					<a href="mailto: <%= @user.email %>"><%= @user.email %></a><br/>
+					<% if @user.major.blank? && current_user?(@user) %>
+						<%= link_to "Declare your major", edit_user_path(@user) %>
+					<% elsif !@user.major.blank? %>
+						<strong>Major: </strong><%= @user.major %>
+					<% end %>
+				</div>
+			</aside>
+		</div>
+	</div>
 	<div class="company-container span5">
 		<% if @user.companies.any? %>
 			<h3 style="display: inline">
@@ -59,5 +62,5 @@
 		<% end %>
 		
 	</div>
-</div>	
+</div>
 		

@@ -4,6 +4,7 @@ class ConnectionsController < ApplicationController
   def create
     @user = User.find(params[:connection][:followed_id])
     current_user.follow!(@user)
+    # flash[:success] = "You are now following #{@user.name.split[0]}"
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
@@ -13,6 +14,7 @@ class ConnectionsController < ApplicationController
   def destroy
     @user = Connection.find(params[:id]).followed
     current_user.unfollow!(@user)
+    # flash[:success] = "You are no longer following #{@user.name}"
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
