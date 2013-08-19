@@ -1,0 +1,76 @@
+<div class="user-info-box">
+	<table width="100%" cellpadding="0" cellspacing="10" border="0">
+	    <tr>
+	      <td width="49%" valign="top">
+					<h4>Major
+						<span class="edit-info">
+							<% if current_user?(@user) %>
+								<% if @user.major.blank? %>
+									<%= link_to " | Declare your major", edit_user_path %>
+								<% else %>
+									<%= link_to " | Change your major", edit_user_path %>
+								<% end %>
+							<% end %>
+						</span>
+					</h4>
+					<% if @user.major.blank? %>
+						<span class="include-tabs">	Undeclared</span>
+					<% else %>
+						<span class="include-tabs">	<%=	@user.major %></span>
+					<% end %>
+	      </td>
+	      <td width="2%">
+	      </td>
+        <td width="49%" valign="top">
+          <h4>Skills
+          	<span class="edit-info">
+		          <% if current_user?(@user) %>
+		          	<%= link_to " | List your skills", skills_user_path %>
+		          <% end %>
+		         </span>
+		      </h4>
+          <% if @user.skills.any? %>
+          	<ul id="skills">
+          		<% @user.skills.each do |s| %>
+          			<li class="include-tabs" style="list-style-type: none;"> <%=	s.skill %></li>
+          		<% end %>
+          	</ul>
+          <% else %>
+          	<span class="include-tabs">	No skills to display</span>
+          <% end %>
+        </td>
+	    </tr>
+	    <tr>
+	    	<td>
+	    		<h4>Interests & Extracurriculars
+          	<span class="edit-info">
+		          <% if current_user?(@user) %>
+		          	<%= link_to " | List your interests", '#' %>
+		          <% end %>
+		         </span>
+		      </h4>
+          
+	    	</td>
+	    	<td></td>
+	    	<td>
+	    		<h4>Experience
+          	<span class="edit-info">
+		          <% if current_user?(@user) %>
+		          	<%= link_to " | List your experiences", '#' %>
+		          <% end %>
+		         </span>
+		      </h4>
+          <% if @user.experiences.any? %>
+          	<ul id="skills">
+          		<% @user.experiences.each do |s| %>
+          			<li class="include-tabs" style="list-style-type: none;"> <%=	s.experience %></li>
+          		<% end %>
+          	</ul>
+          <% else %>
+          	<span class="include-tabs">	No experiences to display</span>
+          <% end %>
+	    	</td>
+	    </tr>
+
+	</table>
+</div>

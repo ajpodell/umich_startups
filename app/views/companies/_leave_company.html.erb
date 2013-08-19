@@ -2,14 +2,16 @@
 	<%= form_for(current_user.memberships.find_by(company_id: company),
 	             html: { method: :delete },
 	             remote: false,
-	             data: { confirm: "Are you sure you want to leave \"#{company.title}.\" \nYou are the last member of this company, if you leave it will be destroyed."}) do |f| %>
+	             data: { confirm: "Are you sure you want to leave \"#{company.title}.\" \nYou are the last member of this company, if you leave it will be destroyed."},
+	             class: 'edit-membership') do |f| %>
 	    <%= f.submit "Leave company", class: "btn" %>
 	<% end %>
 <% else %>
 	<%= form_for(current_user.memberships.find_by(company_id: company),
 	             html: { method: :delete },
 	             remote: false,
-	             data: { confirm: "Are you sure you want to leave #{company.title}"}) do |f| %>
+	             data: { confirm: "Are you sure you want to leave \"#{company.title}\""},
+	             class: 'edit-membership') do |f| %>
 	  <%= f.submit "Leave company", class: "btn" %>
 	<% end %>
 

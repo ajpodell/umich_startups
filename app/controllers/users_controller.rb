@@ -20,7 +20,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @companies = @user.companies.paginate(page: params[:page], per_page: 1)
+    @memberships = @user.memberships
+    @companies = []
+    @memberships.each { |m| @companies.push Company.find(m.company_id) }
+    @companies = @companies.paginate(page: params[:page], per_page: 1) 
   end
 
   def index
@@ -74,11 +77,16 @@ class UsersController < ApplicationController
     render 'show_companies'
   end
 
+  def skills
+    @new_skill = current_user.skills.build
+    render 'add_skill'
+  end
+
 
   private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :photo, :major,
+        params.require(:user).permit(:name, :email, :password, :photo, :photo_file_name, :major,
                                      :password_confirmation)
     end
 

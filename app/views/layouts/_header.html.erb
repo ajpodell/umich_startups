@@ -1,9 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
- <div class="banner" style="width: 100%; background-color: blue; position: absolute; top: 0" >
+ <!-- <div class="banner" style="width: 100%; background-color: blue; position: absolute; top: 0" >
     <%= link_to image_tag("banner_logo.png", style: "height: 100px;", class: "offset3"), root_path, id: "logo" %>
-  </div>
-  <div /*class="navbar-inner affix-top" data-spy="affix" data-offset-top="100px"*/ style="position: relative">
-    <div class="container">
+  </div> -->
+  <!-- <div /*class="navbar-inner affix-top" data-spy="affix" data-offset-top="100px"*/ style="position: relative"> -->
+    <div class="nav-container">
+      <%= link_to "UMich Startups", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
 
@@ -52,6 +53,6 @@
           <% end %>
         </ul>
       </nav>
-    </div>
+    <!-- </div> -->
   </div>
 </header>

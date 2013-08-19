@@ -2,48 +2,81 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.company-container {
+  /*border: 1px solid lightgray;*/
+  min-width: 500px;
+  padding: 0 10px;
+  margin-top: 45px;
+  min-height: 300px;
+  position: relative;
+  background-color: rgb(235, 235, 235);
+}
+
+.company-container-header {
+	border-bottom: 1px solid black;
+	padding: 10px 0px;
+}
+
 .single-company {
-	border: 1px solid lightgray;
+	/*border: 1px solid lightgray;*/
 	min-height: 200px;
 	margin-top: 10px;
+	/*background-color: rgb(235, 235, 235);*/
+	td {
+		vertical-align: top;
+	}
 }
 
 .company-header { 
-	text-align: center;
+	text-align: left;
+	height: 40px;
+	padding-bottom: 15px;
+	td {
+		vertical-align: middle;
+	}
 }
 
 .company-title {
 	display: inline;
+	text-align: left;
 }
 
 .company-about {
-	padding-top: 1em;
+	/*padding-top: 1em;*/
 	line-height: 2em;
 }
 
 .company-mission {
-	display: inline;
+	/*display: inline;*/
+	/*padding-top: 0;*/
 }
 
 .company-description {
-	display: inline;
+	/*display: inline;*/
 
 }
 
-.small-textarea {
-	height: 3em;
-}
-
-.medium-textarea {
-	height: 6em;
-}
-
-li{
-	h2{
-		display: inline;
-	}
-	form{
-		display: inline;
+.company-list {
+	list-style-type: none;
+	margin-left: 0px;
+	li{
+		padding: 10px 0px;
+		display: block;
+		clear: both;
+		h2{
+			float: left;
+			padding-right: 20px;
+			margin-top: 0;
+		}
+		h4 {
+			padding: 0;
+			/*float: left;*/
+			/*display: inline;*/
+			/*text-align: left;*/
+		}
+		form{
+			display: inline;
+		}
 	}
 }
 
@@ -51,5 +84,31 @@ ul.companies {
 	li {
 		padding-bottom: 20px;
 		list-style-type: none;
+		text-align: left;
 	}
+}
+
+.join-company-form {
+	padding: 0px 15px;
+	margin-bottom: 0;
+}
+
+.edit_membership, .new_membership{
+	margin-bottom: 0;
+}
+
+.team {
+	list-style-type: none;
+	margin: 0;
+	li {
+		vertical-align: top;
+		clear: both;
+		min-height: 95px;
+		padding-bottom: 5px;
+	}
+}
+
+.team-member-photo {
+	padding-right: 20px;
+	float: left;
 }

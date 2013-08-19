@@ -14,10 +14,16 @@ class User < ActiveRecord::Base
   has_many :companies # TAKE THIS OUT
   has_many :memberships, dependent: :destroy # foreign_key: "user_id"
 
+  #profile data
+  has_many :skills
+  has_many :experiences
+
   #profile photo
   #attr_accessor :photo
   #attr_accessor :photo_file_name
-  has_attached_file :photo, :styles => { :medium => "200x200>", :thumb => "100x100>", :tiny => "30X30>" }, :default_url => "/assets/missing_:style.png"
+  has_attached_file :photo, :styles => { :medium => "200x200>", 
+    :thumb => "100x100>", :tiny => "30X30>" }, 
+    :default_url => "/assets/missing_:style.png"
 
   has_secure_password
 

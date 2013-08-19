@@ -1,6 +1,25 @@
 <% provide(:title, "My Companies") %>
-<h3>My Companies</h3>
+<h1 style="text-align: left">My Companies</h1>
+<%= render @companies %>
 
-<% if @companies.any? %>
-	<%= render 'companies/join_company_form' %></li>
+
+<% if false %>
+	<% if @companies.any? %>
+		<ul class="company-list">
+			<% @companies.each do |company| %>
+				<li>
+					<h2><%= company.title %></h2>
+					<%= render partial: 'companies/join_company_form', locals: { company: company} %>
+					<br/>
+					<h4>Mission </h4>
+						<% if company.mission.blank? %>
+							This company does not have a mission statement
+						<% else %>
+							<%= company.mission %>
+						<% end %>
+				</li>
+
+			<% end %>
+		</ul>
+	<% end %>
 <% end %>

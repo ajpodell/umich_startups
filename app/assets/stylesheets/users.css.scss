@@ -2,6 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$medium: 300px;
+
 h1.title {
 	text-align: left;
+	font-size: 60px;
+}
+
+img.user-photo {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  padding-right: 15px;
+}
+
+.user-profile-box {
+	margin: auto;
+
+  /* Dealt with in margin-top of company container*/
+  /*padding-bottom: 45px;  D*/ 
+}
+
+.user-photo {
+	float: left;
+	width: $medium;
+
+}
+
+.user-info-box {
+	width: 630px; 
+	/*height: 190px; */
+	overflow-y: auto;
+	background-color: white; 
+	/*border: 1px solid black; */
+	margin-left: 300px; 
+	padding: 10px 15px;
+  /*background-color: rgb(235, 235, 235);*/
+  .edit-info {
+    font-size: 16px;
+  }
+}
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid lightgray;
+    &:last-child {
+      border-bottom: 1px solid lightgray;
+    }
+  }
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814162639) do
+ActiveRecord::Schema.define(version: 20130819194833) do
 
   create_table "companies", force: true do |t|
     t.string   "title"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 20130814162639) do
   add_index "connections", ["follower_id", "followed_id"], name: "index_connections_on_follower_id_and_followed_id", unique: true
   add_index "connections", ["follower_id"], name: "index_connections_on_follower_id"
 
+  create_table "experiences", force: true do |t|
+    t.string   "experience"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiences", ["experience"], name: "index_experiences_on_experience"
+  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id"
+
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
     t.integer  "company_id"
@@ -51,6 +61,16 @@ ActiveRecord::Schema.define(version: 20130814162639) do
   add_index "memberships", ["creator"], name: "index_memberships_on_creator"
   add_index "memberships", ["user_id", "company_id"], name: "index_memberships_on_user_id_and_company_id", unique: true
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
+
+  create_table "skills", force: true do |t|
+    t.string   "skill"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "skills", ["skill"], name: "index_skills_on_skill"
+  add_index "skills", ["user_id"], name: "index_skills_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

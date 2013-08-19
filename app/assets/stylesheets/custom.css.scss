@@ -3,6 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$PAGE_WIDTH: 980px;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -12,21 +13,113 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
+* {
+  margin: 0;
+}
+
 html {
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   /*min-height: 100%;*/
+  height: 100%;
 }
 
 body {
   /*padding-top: 60px;*/
   /*min-height: 100%;*/
+  height: 100%;
+  /*margin-top: 40px;*/
 }
 
 .navbar-fixed-top{
-  min-width: 940px;
-  position: relative;
-  padding-top: 109px;
-  background-color: yellow;
+  min-width: $PAGE_WIDTH;
+  position: fixed;
+  top: 0;
+  /*padding-top: 109px;*/
+  background-color: lightgray;
+  color: blue;
+  .nav {
+    li {
+      a {
+        color: blue;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+.globalContainer {
+  width: $PAGE_WIDTH;
+  /*min-height: 100%;*/
+  /*margin-bottom: -100px; */
+  /*margin-right: auto;*/
+  /*margin-left: auto;*/
+
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -72px;
+
+}
+
+.nav-container {
+  width: $PAGE_WIDTH;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.globalContainer:after {
+  content: "";
+  display: block;
+  /*height: 40px; */ /* done with footer*/
+}
+
+
+ /*footer */
+  .footer, .push, .globalContainer:after { 
+    height: 40px;
+  }
+
+footer {
+  /*position: absolute;
+  /*bottom: 0px;*/
+  /*width: 940px;*/
+  /*margin-right: auto;*/
+  /*margin-left: auto;*/
+  margin-top: 25px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover { 
+      color: $grayDarker;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* global stylings*/
+
+.include-tabs {
+  white-space: pre;
 }
 
 section {
@@ -82,8 +175,8 @@ li {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
+  color: blue;
+  /*text-transform: uppercase;*/
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -94,44 +187,6 @@ li {
   }
 }
 
-/* footer */
-
-footer {
-  /*position: absolute;*/
-  /*bottom: 0px;*/
-  /*width: 940px;*/
-  /*margin-right: auto;*/
-  /*margin-left: auto;*/
-  margin-top: 25px;
-  padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $grayLight;
-  a {
-    color: $gray;
-    &:hover { 
-      color: $grayDarker;
-    }
-  }  
-  small { 
-    float: left; 
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 10px;
-    }
-  }
-}
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
 
 /* sidebar */
 
@@ -179,29 +234,10 @@ aside {
   }
 }
 
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-}
 
-/* profile */
-.container {
-  /*min-height: 100%;*/
-}
+
 .profile-description { 
   padding-top: 20px;
-}
-
-/* Companies on profile */
-.company-container {
-  /*border: 1px solid lightgray;*/
-  min-width: 500px;
-  padding: 0 10px;
-  min-height: 300px;
-  position: relative;
 }
 
 .pagination-top {
@@ -209,8 +245,17 @@ aside {
   top: 0;
 }
 .pagination-bottom {
-  position: absolute;
-  bottom: 0;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  text-align: right;
+}
+
+.small-textarea {
+  height: 3em;
+}
+
+.medium-textarea {
+  height: 6em;
 }
 
 
@@ -241,45 +286,4 @@ input {
   @extend .error;
 }
 
-/* users index */
 
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
-
-/* microposts */
-/*
-.microposts {
-  list-style: none;
-  margin: 10px 0 0 0;
-
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-}
-.content {
-  display: block;
-}
-.timestamp {
-  color: $grayLight;
-}
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}*/

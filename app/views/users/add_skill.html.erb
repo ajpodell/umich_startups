@@ -1,0 +1,15 @@
+<% provide(:title, "Add skill") %>
+<h1>Add Skill</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@new_skill) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :skill, "New skill" %>
+      <%= f.text_field :skill %>
+
+      <%= f.submit "Add skill", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

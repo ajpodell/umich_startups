@@ -1,54 +1,74 @@
 <div class="single-company">
-	<section class="company-header">
-		<h2 class="company-title">
-			<%= render partial: '/companies/join_company_form', locals: { company: company } %>
-			<!-- <table>
-				<tr>
+	<div class="company-header company-list">
+		<table style="min-width: 90%">
+			<tr>
+				<td>
+					<h1 class="company-title">
+						"<%= company.title	%>"
+					</h1>
+				</td>
+				<td>
+					<%= render partial: '/companies/join_company_form', locals: { company: company } %>					
+				</td>
+				<% if current_user?(@user) || current_user.admin? %>
 					<td>
-						<%= company.title %>
-					</td>
-					<td>
-						#render company form
-					</td>
-				</tr>
-			</table> -->
-		</h2>
+						<%= link_to "edit", edit_company_path(company) %> |
+						<%= link_to "delete", company, method: :delete,
+										data: { confirm: "Are you sure you want to delete \"#{company.title}\"" } %>
 
-		<% if current_user?(@user) || current_user.admin? %>
-			<%= link_to "edit", edit_company_path(company) %> |
-			<%= link_to "delete", company, method: :delete,
-									data: { confirm: "Are you sure you want to delete this company" } %>
-		<% end %>
-	</section>
+					</td>
+				<% end %>
+			</tr>
+		</table>
+
+	</div>
 		
-	<section class="company-about">
-		<aside>
-			<% if company.mission && !company.mission.blank? %>
-				<h4 class="company-mission">Mission Statement: </h4> <%= company.mission %>
-			<% elsif current_user?(@user) %>
-				<%= link_to "Add a mission statement for \"#{company.title}\"",
-							edit_company_path(company) %>
-			<% elsif current_user.admin? %>
-				<%= link_to "Edit this company as admin", 
-							edit_company_path(company) %>
-			<% end %>
-		</aside>
+	<table width="100%">
+		<tr>
+			<td style="width: 49%">
+				<div class="company-about">
+					<section>
+						<% if company.mission && !company.mission.blank? %>
+							<h4 class="company-mission">Mission Statement</h4> 
+							<%= company.mission %>
+						<% elsif current_user?(@user) %>
+							<%= link_to "Add a mission statement for \"#{company.title}\"",
+										edit_company_path(company) %>
+						<% elsif current_user.admin? %>
+							<%= link_to "Edit this company as admin", 
+										edit_company_path(company) %>
+						<% end %>
+					</section>
 
-		<aside>
-			<% if !company.description.blank? %>
-				<h4 class="company-description">Description: </h4> 
-				<%= company.description %>
-			<% elsif current_user?(@user) %>
-				<%= link_to "Add a description for \"#{company.title}\"", 
-							edit_company_path(company) %>
-			<% elsif current_user.admin? %>
-				<%= link_to "Edit this company as admin", 
-							edit_company_path(company) %>
-			<% end %>
-		</aside>
-
-
-
-	</section>
+					<section>
+						<% if !company.description.blank? %>
+							<h4 class="company-description">Description </h4> 
+							<%= company.description %>
+						<% elsif current_user?(@user) %>
+							<%= link_to "Add a description for \"#{company.title}\"", 
+										edit_company_path(company) %>
+						<% elsif current_user.admin? %>
+							<%= link_to "Edit this company as admin", 
+										edit_company_path(company) %>
+						<% end %>
+					</div>
+				</div>
+			</td>
+			<td style="width: 2%"></td>
+			<td width="49%">
+				<h4>Team</h4>
+				<ul class="team">
+					<% team = company.team %>
+					
+					<% team.each do |t| %>
+						<li>
+							<%= image_tag t.photo(:thumb), class: "team-member-photo" %>
+							<h5><%= t.name %></h5>
+						</li>
+					<% end %>
+				</ul>
+			</td>
+		</tr>
+	</table>
 
 </div>

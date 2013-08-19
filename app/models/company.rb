@@ -5,4 +5,9 @@ class Company < ActiveRecord::Base
 
 	has_many :memberships, dependent: :destroy
 
+	def team
+		team_ids = self.memberships.collect(&:user_id)
+		return User.find(team_ids)
+	end
+
 end
